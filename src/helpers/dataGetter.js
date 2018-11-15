@@ -11,11 +11,12 @@ const getAllTasksFromDb = () => new Promise((resolve, reject) => {
       if (allTasksObject != null) {
         Object.keys(allTasksObject).forEach((taskId) => {
           const newTask = allTasksObject[taskId];
+          console.log(newTask);
           newTask.id = taskId;
           allTasksArray.push(newTask);
         });
       }
-      console.log(allTasksArray[0]);
+      console.log(allTasksArray);
       resolve(allTasksArray);
     })
     .catch((err) => {

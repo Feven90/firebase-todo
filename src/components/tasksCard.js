@@ -23,12 +23,12 @@ const creatCards = (tasks) => {
 };
 
 const getTasks = () => {
-  dataGetter().then((tasks) => {
-    console.log(tasks.data);
-    creatCards(tasks.data)
-      .then((allTasksArrary) => {
-        $('tasks-card').html(creatCards(allTasksArrary.data));
-      });
+  dataGetter().then((allTasksArrary) => {
+    console.log(allTasksArrary);
+    $('tasks-card').html(creatCards(allTasksArrary.data));
+    // .then((allTasksArrary) => {
+    //     $('tasks-card').html(creatCards(allTasksArrary.data));
+    //   });
   })
     .catch((error) => {
       console.error(error);
