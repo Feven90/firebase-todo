@@ -1,3 +1,13 @@
+// import $ from 'jquery';
+import firebase from 'firebase/app';
 import 'bootstrap';
-import './index.scss';
-// import apiKeys from '../db/apiKeys.json';
+
+import apiKeys from '../db/apiKeys.json';
+import getTasks from './components/tasksCard';
+
+const initializeApp = () => {
+  firebase.initializeApp(apiKeys.firebase);
+  getTasks();
+};
+
+initializeApp();
