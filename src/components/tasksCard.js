@@ -25,7 +25,7 @@ const creatCards = (tasks) => {
 const getTasks = () => {
   dataGetter().then((allTasksArrary) => {
     console.log(allTasksArrary);
-    $('tasks-card').html(creatCards(allTasksArrary.data));
+    $('tasks-card').html(creatCards(allTasksArrary));
     // .then((allTasksArrary) => {
     //     $('tasks-card').html(creatCards(allTasksArrary.data));
     //   });
