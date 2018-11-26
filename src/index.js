@@ -3,13 +3,15 @@ import firebase from 'firebase/app';
 import 'bootstrap';
 
 import apiKeys from '../db/apiKeys.json';
-import getTasks from './components/tasksCard';
+import getAllTasks from './components/tasksCard';
 import loginButton from './components/Auth/auth';
+import createNavbar from './components/Navbar/navbar';
 
 const initializeApp = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
-  getTasks();
+  createNavbar();
   loginButton();
+  getAllTasks.getTasks();
 };
 
 initializeApp();

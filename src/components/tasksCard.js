@@ -5,27 +5,27 @@ import 'bootstrap';
 
 // import apiKeys from '../db/apiKeys.json';
 
-import dataGetter from '../helpers/dataGetter';
+import getAllTasksFromDb from '../helpers/dataGetter';
 
 const creatCards = (tasks) => {
-  tasks.forEach((task) => {
+  tasks.forEach((task, i) => {
     let domString = '';
     if (`${tasks.isCompleted}` === 'true') {
       domString = `<div> 
     <div class="img-holder">
-        <img class="tasks-img" src="${task.img}"> 
+        <img class="tasks-img" src="${task[i].img}"> 
     </div>
-    <h3>${task.task}</h3>
+    <h3>${task[i].task}</h3>
     </div>`;
     }
-    return domString;
+    $('#tasks-card').html(domString);
   });
 };
 
 const getTasks = () => {
-  dataGetter().then((allTasksArrary) => {
+  getAllTasksFromDb().then((allTasksArrary) => {
     console.log(allTasksArrary);
-    $('tasks-card').html(creatCards(allTasksArrary));
+    creatCards(allTasksArrary);
     // .then((allTasksArrary) => {
     //     $('tasks-card').html(creatCards(allTasksArrary.data));
     //   });
