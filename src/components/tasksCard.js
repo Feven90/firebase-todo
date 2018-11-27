@@ -2,37 +2,46 @@
 import $ from 'jquery';
 // import firebase from 'firebase/app';
 import 'bootstrap';
-
 // import apiKeys from '../db/apiKeys.json';
+import authHelpers from '../helpers/authHelpers';
 
-import getAllTasksFromDb from '../helpers/dataGetter';
+import getAllTasks from '../helpers/dataGetter';
 
 const creatCards = (tasks) => {
-  tasks.forEach((task, i) => {
-    let domString = '';
-    if (`${tasks.isCompleted}` === 'true') {
-      domString = `<div> 
+  console.log(tasks);
+  let domString = '';
+  tasks.forEach((task) => {
+    if (task.isCompleted === true) {
+      domString += `<div> 
     <div class="img-holder">
-        <img class="tasks-img" src="${task[i].img}"> 
+        <img class="tasks-img" src="${task.img}"> 
     </div>
-    <h3>${task[i].task}</h3>
+    <h3>${task.task}</h3>
     </div>`;
     }
-    $('#tasks-card').html(domString);
   });
+  console.log(domString);
+  $('#tasks').html(domString);
 };
 
 const getTasks = () => {
-  getAllTasksFromDb().then((allTasksArrary) => {
-    console.log(allTasksArrary);
-    creatCards(allTasksArrary);
+  const uid = authHelpers.getCurrentUid();
+  console.log(uid);
+  getAllTasks.getAllTasksFromDb(uid)
+    .then((allTasksArrary) => {
+      console.log(allTasksArrary);
+      creatCards(allTasksArrary);
     // .then((allTasksArrary) => {
     //     $('tasks-card').html(creatCards(allTasksArrary.data));
     //   });
-  })
+    })
     .catch((error) => {
       console.error(error);
     });
 };
 
-export default getTasks;
+const initializeTasksPage = () => {
+  getTasks();
+};
+
+export default initializeTasksPage;
