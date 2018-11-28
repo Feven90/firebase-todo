@@ -2,37 +2,46 @@
 import $ from 'jquery';
 // import firebase from 'firebase/app';
 import 'bootstrap';
-
 // import apiKeys from '../db/apiKeys.json';
+import authHelpers from '../helpers/authHelpers';
 
-import dataGetter from '../helpers/dataGetter';
+import getAllTasks from '../helpers/dataGetter';
 
 const creatCards = (tasks) => {
+  console.log(tasks);
+  let domString = '';
   tasks.forEach((task) => {
-    let domString = '';
-    if (`${tasks.isCompleted}` === 'true') {
-      domString = `<div> 
+    if (task.isCompleted === true) {
+      domString += `<div> 
     <div class="img-holder">
         <img class="tasks-img" src="${task.img}"> 
     </div>
     <h3>${task.task}</h3>
     </div>`;
     }
-    return domString;
   });
+  console.log(domString);
+  $('#tasks').html(domString);
 };
 
 const getTasks = () => {
-  dataGetter().then((allTasksArrary) => {
-    console.log(allTasksArrary);
-    $('tasks-card').html(creatCards(allTasksArrary.data));
+  const uid = authHelpers.getCurrentUid();
+  console.log(uid);
+  getAllTasks.getAllTasksFromDb(uid)
+    .then((allTasksArrary) => {
+      console.log(allTasksArrary);
+      creatCards(allTasksArrary);
     // .then((allTasksArrary) => {
     //     $('tasks-card').html(creatCards(allTasksArrary.data));
     //   });
-  })
+    })
     .catch((error) => {
       console.error(error);
     });
 };
 
-export default getTasks;
+const initializeTasksPage = () => {
+  getTasks();
+};
+
+export default initializeTasksPage;

@@ -12,6 +12,7 @@ const extractScss = new ExtractTextPlugin({
 });
 
 module.exports = {
+  devtool: 'source-map',
   entry: {
     bundle: './src/index.js'
   },
