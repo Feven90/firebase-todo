@@ -23,4 +23,6 @@ const getAllTasksFromDb = uid => new Promise((resolve, reject) => {
     });
 });
 
-export default { getAllTasksFromDb };
+const addNewTasks = TasksObject => axios.post(`${baseUrl}/tasks.json`, JSON.stringify(TasksObject));
+
+export default { getAllTasksFromDb, addNewTasks };

@@ -13,9 +13,6 @@ const creatCards = (tasks) => {
   tasks.forEach((task) => {
     if (task.isCompleted === true) {
       domString += `<div> 
-    <div class="img-holder">
-        <img class="tasks-img" src="${task.img}"> 
-    </div>
     <h3>${task.task}</h3>
     </div>`;
     }
