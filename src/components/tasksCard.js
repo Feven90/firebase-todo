@@ -8,12 +8,13 @@ import authHelpers from '../helpers/authHelpers';
 import getAllTasks from '../helpers/dataGetter';
 
 const creatCards = (tasks) => {
-  console.log(tasks);
   let domString = '';
   tasks.forEach((task) => {
-    if (task.isCompleted === true) {
+    if (task.isCompleted === false) {
       domString += `<div> 
     <h3>${task.task}</h3>
+    <button class="btn-danger delete-btn" data-delete-id=${task.id}>X</button>
+    <button class="btn-info edit-btn" data-edit-id=${task.id}>Edit</button>
     </div>`;
     }
   });
@@ -23,10 +24,8 @@ const creatCards = (tasks) => {
 
 const getTasks = () => {
   const uid = authHelpers.getCurrentUid();
-  console.log(uid);
   getAllTasks.getAllTasksFromDb(uid)
     .then((allTasksArrary) => {
-      console.log(allTasksArrary);
       creatCards(allTasksArrary);
     // .then((allTasksArrary) => {
     //     $('tasks-card').html(creatCards(allTasksArrary.data));

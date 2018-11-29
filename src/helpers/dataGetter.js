@@ -10,12 +10,10 @@ const getAllTasksFromDb = uid => new Promise((resolve, reject) => {
       if (allTasksObject != null) {
         Object.keys(allTasksObject).forEach((taskId) => {
           const newTask = allTasksObject[taskId];
-          console.log(newTask);
           newTask.id = taskId;
           allTasksArray.push(newTask);
         });
       }
-      console.log(allTasksArray);
       resolve(allTasksArray);
     })
     .catch((err) => {
@@ -23,6 +21,26 @@ const getAllTasksFromDb = uid => new Promise((resolve, reject) => {
     });
 });
 
-const addNewTasks = TasksObject => axios.post(`${baseUrl}/tasks.json`, JSON.stringify(TasksObject));
+const getSingleTask = TaskId => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/tasks/${TaskId}.json`)
+    .then((result) => {
+      const singleTask = result.data;
+      singleTask.id = TaskId;
+      resolve(singleTask);
+    })
+    .catch((error) => {
+      reject(error);
+    });
+});
 
-export default { getAllTasksFromDb, addNewTasks };
+const addNewTask = TasksObject => axios.post(`${baseUrl}/tasks.json`, JSON.stringify(TasksObject));
+
+const updateTask = (tasksObject, taskId) => axios.put(`${baseUrl}/tasks/${taskId}.json`, JSON.stringify(tasksObject));
+
+
+export default {
+  getAllTasksFromDb,
+  addNewTask,
+  updateTask,
+  getSingleTask,
+};

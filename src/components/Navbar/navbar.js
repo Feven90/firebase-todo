@@ -11,6 +11,7 @@ const navbarEvents = () => {
       firebase.auth().signOut().then(() => {
         $('#auth').show();
         $('#tasks-collaction').hide();
+        $('#add-edit-task').hide();
       }).catch((err) => {
         console.error('you still logged in', err);
       });
