@@ -12,11 +12,13 @@ const navbarEvents = () => {
         $('#auth').show();
         $('#tasks-collaction').hide();
         $('#add-edit-task').hide();
+        $('#completed-tasks').hide();
       }).catch((err) => {
         console.error('you still logged in', err);
       });
     } else {
       $('#tasks-collaction').show();
+      $('#completed-tasks').show();
       $('#auth').hide();
     }
   });
