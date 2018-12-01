@@ -8,7 +8,6 @@ const formBuilder = (tasks) => {
       <div class="form-group">
         <label for="form-friend-name">Name: </label>
         <input type="text" class="form-control" value="${tasks.task}" id="form-task" placeholder="walk the dog">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
       </div>
     `;
   return form;
@@ -31,7 +30,7 @@ const buildAddForm = () => { // we need this function just to reuse fomBuilder f
   domString += formBuilder(emptyTask);
   domString += '<button id="add-task">Add Task</button>';
   $('#add-edit-task').html(domString).show();
-  $('#tasks-collaction').hide();
+  $('#tasks-collaction').show();
 };
 const addNewTask = () => {
   const newTask = gettingTaskFromForm();
