@@ -17,6 +17,7 @@ const checkLoginStatus = (initializeTasksPage) => {
       $('#tasks-card').hide();
       $('#navbar-button-logout').hide();
       $('#tasks').hide();
+      $('#tasks-collaction').hide();
     }
   });
 };
