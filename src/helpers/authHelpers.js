@@ -10,7 +10,8 @@ const checkLoginStatus = (initializeTasksPage) => {
       $('#navbar-button-logout').show();
       $('#auth').hide();
       $('#tasks').show();
-      console.log(initializeTasksPage);
+      $('#completed-tasks').show();
+      $('#tasks-collaction').show();
       initializeTasksPage();
     } else {
       $('#auth').show();

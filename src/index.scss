@@ -15,7 +15,7 @@ div#tasks {
 }
 div#completed-tasks {
     width: 600px;
-    height: 500px;
+    height: 300px;
     overflow: scroll;
 }
 // .header {
@@ -24,3 +24,10 @@ div#completed-tasks {
 //     color: #000;
 //     margin: 20px;
 // }
+#auth {
+    position: relative;
+    float: left;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
