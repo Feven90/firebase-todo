@@ -16,6 +16,10 @@ const navbarEvents = () => {
       }).catch((err) => {
         console.error('you still logged in', err);
       });
+    } else if (e.target.id === 'tasks-card') {
+      $('#auth').hide();
+      $('#tasks-collaction').show();
+      $('#add-edit-task').html('').hide();
     } else {
       $('#tasks-collaction').show();
       $('#completed-tasks').show();

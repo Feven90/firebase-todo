@@ -6,7 +6,7 @@ import initializeTasksPage from '../tasksCard';
 const formBuilder = (tasks) => {
   const form = `
       <div class="form-group">
-        <label for="form-friend-name">Name: </label>
+        <label for="form-task-name">Task: </label>
         <input type="text" class="form-control" value="${tasks.task}" id="form-task" placeholder="walk the dog">
       </div>
     `;
@@ -34,7 +34,6 @@ const buildAddForm = () => { // we need this function just to reuse fomBuilder f
 };
 const addNewTask = () => {
   const newTask = gettingTaskFromForm();
-  console.log(newTask);
   getData.addNewTask(newTask)
     .then(() => {
       $('#add-edit-task').html('').hide();
@@ -65,7 +64,7 @@ const updateTask = (e) => {
   getData.updateTask(updatedTask, TaskId)
     .then(() => {
       $('#add-edit-task').html('').hide();
-      $('#single-container').html('');
+      // $('#single-container').html('');
       $('#tasks-collaction').show();
       initializeTasksPage();
     })

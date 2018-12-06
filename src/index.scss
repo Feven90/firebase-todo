@@ -1,4 +1,33 @@
 @import "~bootstrap/scss/bootstrap";
 body {
-    background-color: indianred;
+    background-image: url(./images/task3.jpg);
+    background-repeat: no-repeat;
+}
+.task-page {
+    padding: 10px;
+    background-color: goldenrod;
+    border: solid 0.5px;
+}
+div#tasks {
+    width: 600px;
+    height: 500px;
+    overflow: scroll;
+}
+div#completed-tasks {
+    width: 600px;
+    height: 300px;
+    overflow: scroll;
+}
+// .header {
+//     position: fixed;
+//     background-color: goldenrod;
+//     color: #000;
+//     margin: 20px;
+// }
+#auth {
+    position: relative;
+    float: left;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
