@@ -7,6 +7,7 @@ import authHelpers from '../helpers/authHelpers';
 
 import getAllTasks from '../helpers/dataGetter';
 import deleteIcon from '../images/deleteIcon.jpeg';
+// import './tasksCard.scss';
 
 const creatCards = (tasks) => {
   let domString = '';
@@ -14,21 +15,20 @@ const creatCards = (tasks) => {
   domString += '<h2 class="header">Tasks To Complete</h2>';
   tasks.forEach((task) => {
     if (task.isCompleted === false) {
-      domString += `<div class="d-flex flex-row justify-content-center task-page"> 
-    <div class="mx-auto justify-content-center" style="width: 400px;">
-    <div class="d-flex flex-row">
-    <input class="form-check-input is-completed-checkbox" type="checkbox" id="${task.id}">
-    <h3 class="tasks-to-compelete justify-content-center">${task.task}</h3>
-    <img src="${deleteIcon}" width="20px" height="20px" class="btn-danger delete-btn" data-delete-id=${task.id}>
-    <button class="btn-info edit-btn" data-edit-id=${task.id}>Edit</button>
-    </div>
-    </div>
-    </div>`;
+      domString += `<div class="task-page" > 
+              <div class="card-body">
+              <div class="d-flex flex-row">
+              <input class="form-check-input is-completed-checkbox" type="checkbox" id="${task.id}">
+              <h3 class="tasks-to-compelete justify-content-center">${task.task}</h3>
+              <img src="${deleteIcon}" width="20px" height="20px" class="btn-danger delete-btn" data-delete-id=${task.id}>
+              <button class="btn-info edit-btn" data-edit-id=${task.id}>Edit</button>
+              </div>
+              </div>
+              </div>`;
     }
   });
   $('#tasks').html(domString);
 };
-
 
 const completedTasks = (tasks) => {
   let print = '';
