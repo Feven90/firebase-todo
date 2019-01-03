@@ -3,7 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'bootstrap';
 import '../../index.scss';
-// import './navbar.scss';
+import './navbar.scss';
 
 const navbarEvents = () => {
   $('.nav-link').on('click', (e) => {

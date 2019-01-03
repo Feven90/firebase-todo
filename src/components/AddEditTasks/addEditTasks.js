@@ -30,7 +30,7 @@ const buildAddForm = () => { // we need this function just to reuse fomBuilder f
   };
   let domString = '<h2>Add new task</h2>';
   domString += formBuilder(emptyTask);
-  domString += '<button id="add-task">Add Task</button>';
+  domString += '<button id="add-task" class="btn-danger">Add Task</button>';
   $('#add-edit-task').html(domString).show();
   $('#tasks-collaction').show();
 };
