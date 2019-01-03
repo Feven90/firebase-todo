@@ -5,13 +5,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
-.task-page {
-    padding: 10px;
-    // background-color: goldenrod;
-    background-color: #fff;
-    border: solid 0.5px;
-    width: 500px;
-}
+
 // #tasks {
 //     // background-image: url(./images/notebook.jpg);
 //     width: 600px;
@@ -29,9 +23,7 @@ body {
 //     color: #000;
 //     margin: 20px;
 // }
-#tasks {
-    justify-content: end;
-}
+
 #auth {
     position: absolute;
     top: 40%;

@@ -2,10 +2,12 @@ import $ from 'jquery';
 import authHelpers from '../../helpers/authHelpers';
 import getData from '../../helpers/dataGetter';
 import initializeTasksPage from '../tasksCard';
+import './addEditTasks.scss';
+
 
 const formBuilder = (tasks) => {
   const form = `
-      <div class="form-group">
+      <div class="form-group" width="500px">
         <label for="form-task-name">Task: </label>
         <input type="text" class="form-control" value="${tasks.task}" id="form-task" placeholder="walk the dog">
       </div>

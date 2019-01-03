@@ -7,7 +7,7 @@ import authHelpers from '../helpers/authHelpers';
 
 import getAllTasks from '../helpers/dataGetter';
 import deleteIcon from '../images/deleteIcon.jpeg';
-// import './tasksCard.scss';
+import './tasksCard.scss';
 
 const creatCards = (tasks) => {
   let domString = '';
@@ -15,16 +15,22 @@ const creatCards = (tasks) => {
   domString += '<h2 class="header">Tasks To Complete</h2>';
   tasks.forEach((task) => {
     if (task.isCompleted === false) {
-      domString += `<div class="task-page" > 
-              <div class="card-body">
-              <div class="d-flex flex-row">
+      domString += `
+              <div class="d-flex flex-row card-body">
+              <div>
               <input class="form-check-input is-completed-checkbox" type="checkbox" id="${task.id}">
               <h3 class="tasks-to-compelete justify-content-center">${task.task}</h3>
+              </div>
+              <div>
               <img src="${deleteIcon}" width="20px" height="20px" class="btn-danger delete-btn" data-delete-id=${task.id}>
               <button class="btn-info edit-btn" data-edit-id=${task.id}>Edit</button>
               </div>
-              </div>
               </div>`;
+    }
+    if (task === '') {
+      domString += `<div>
+      <h2> No Tasks are available</h2>
+      </div>`;
     }
   });
   $('#tasks').html(domString);
@@ -35,14 +41,19 @@ const completedTasks = (tasks) => {
   print += '<h2>Completed Tasks</h2>';
   tasks.forEach((task) => {
     if (task.isCompleted) {
-      print += `<div class="d-flex flex-row justify-content-center task-page"> 
+      print += `<div class="d-flex flex-row card-body"> 
+      <div>
+      <input class="form-check-input checkbox-true" type="checkbox" id="${task.id}">
       <h3 class="completed">${task.task}</h3>
+      </div>
+      <div>
       <img src="${deleteIcon}" width="20px" height="20px" class="btn-danger delete-btn" data-delete-id=${task.id}>
+      </div>
       </div>`;
     }
   });
   $('#completed-tasks').html(print);
-  $('.completed').attr('checked', true);
+  $('.checkbox-true').attr('checked', true);
   $('.completed').css('text-decoration', 'line-through');
 };
 
